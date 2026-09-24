@@ -1,0 +1,342 @@
+{
+ "tool": "tolerance_mc.py",
+ "samples_per_fit": 20000,
+ "printed_sigma_mm": 0.09999999999999999,
+ "limit_percent": 0.1,
+ "fits": [
+  {
+   "fit": "lid skirt in the cavity, total",
+   "mean_mm": 1.4,
+   "p0_1_mm": 0.976,
+   "p99_9_mm": 1.838,
+   "limit_percent": 0.1,
+   "modes": [
+    {
+     "mode": "skirt jams, the O-ring never touches",
+     "percent": 0.0,
+     "hard": true
+    }
+   ],
+   "verdict": "ok",
+   "note": "0.7 mm per side, the tighter of the two axes"
+  },
+  {
+   "fit": "PCB 33 x 47 between the ribs, total",
+   "mean_mm": 0.8,
+   "p0_1_mm": 0.444,
+   "p99_9_mm": 1.148,
+   "limit_percent": 0.1,
+   "modes": [
+    {
+     "mode": "board does not drop in",
+     "percent": 0.0,
+     "hard": true
+    }
+   ],
+   "verdict": "ok",
+   "note": "0.8 mm nominal, bought part"
+  },
+  {
+   "fit": "LiPo 103450 in the pocket, total",
+   "mean_mm": 1.499,
+   "p0_1_mm": 0.904,
+   "p99_9_mm": 2.083,
+   "limit_percent": 0.1,
+   "modes": [
+    {
+     "mode": "cell does not drop in",
+     "percent": 0.0,
+     "hard": true
+    }
+   ],
+   "verdict": "ok",
+   "note": "1.5 mm nominal, the cell is the loose part"
+  },
+  {
+   "fit": "LiPo 852040 in the adapter tray, total",
+   "mean_mm": 1.0,
+   "p0_1_mm": 0.38,
+   "p99_9_mm": 1.598,
+   "limit_percent": 0.1,
+   "modes": [
+    {
+     "mode": "cell does not drop in",
+     "percent": 0.0,
+     "hard": true
+    }
+   ],
+   "verdict": "ok",
+   "note": "1.0 mm nominal"
+  },
+  {
+   "fit": "adapter tray in the pocket, y",
+   "mean_mm": 0.8,
+   "p0_1_mm": 0.358,
+   "p99_9_mm": 1.234,
+   "limit_percent": 0.1,
+   "modes": [
+    {
+     "mode": "tray does not drop in",
+     "percent": 0.0,
+     "hard": true
+    }
+   ],
+   "verdict": "ok",
+   "note": "printed against printed"
+  },
+  {
+   "fit": "adapter tray past the PCB hold-down lip",
+   "mean_mm": 0.9,
+   "p0_1_mm": 0.467,
+   "p99_9_mm": 1.335,
+   "limit_percent": 0.1,
+   "modes": [
+    {
+     "mode": "tray fouls the lip on the way in",
+     "percent": 0.0,
+     "hard": true
+    }
+   ],
+   "verdict": "ok",
+   "note": "The lips start at y 48.3. The tray reaches 47.4 mm. The montage walks the same travel."
+  },
+  {
+   "fit": "LiPo 103450 past the PCB hold-down lip",
+   "mean_mm": 0.801,
+   "p0_1_mm": 0.187,
+   "p99_9_mm": 1.379,
+   "limit_percent": 0.1,
+   "modes": [
+    {
+     "mode": "cell fouls the lip on the way in",
+     "percent": 0.0,
+     "hard": true
+    }
+   ],
+   "verdict": "ok",
+   "note": "the cell sits 0.5 off the front wall so it clears the lip by 0.8"
+  },
+  {
+   "fit": "battery plate past the PCB hold-down lip",
+   "mean_mm": 0.6,
+   "p0_1_mm": 0.175,
+   "p99_9_mm": 1.027,
+   "limit_percent": 0.1,
+   "modes": [
+    {
+     "mode": "plate fouls the lip on the way in",
+     "percent": 0.0,
+     "hard": true
+    }
+   ],
+   "verdict": "ok",
+   "note": "the plate stops 0.6 short of the lips, so it drops straight in"
+  },
+  {
+   "fit": "PCB under the hold-down lip",
+   "mean_mm": 0.501,
+   "p0_1_mm": 0.13,
+   "p99_9_mm": 0.876,
+   "limit_percent": 0.1,
+   "modes": [
+    {
+     "mode": "board is too thick to pass the lip",
+     "percent": 0.0,
+     "hard": true
+    }
+   ],
+   "verdict": "ok",
+   "note": "0.5 mm over a 1.6 mm board: the first 0.15 sat inside the board's own thickness tolerance"
+  },
+  {
+   "fit": "leg crossing section, vertical in the tunnel",
+   "mean_mm": 0.601,
+   "p0_1_mm": 0.301,
+   "p99_9_mm": 0.916,
+   "limit_percent": 0.1,
+   "modes": [
+    {
+     "mode": "leg binds in the tunnel",
+     "percent": 0.0,
+     "hard": true
+    }
+   ],
+   "verdict": "ok",
+   "note": "a removable leg is a moving part, so 0.6 mm total, 0.3 a side"
+  },
+  {
+   "fit": "M3 through the base column",
+   "mean_mm": 0.6,
+   "p0_1_mm": 0.289,
+   "p99_9_mm": 0.923,
+   "limit_percent": 0.1,
+   "modes": [
+    {
+     "mode": "screw does not pass",
+     "percent": 0.0,
+     "hard": true
+    }
+   ],
+   "verdict": "ok",
+   "note": "generous bore, also the powder escape path"
+  },
+  {
+   "fit": "SMA bulkhead 6.35 shank in the wall",
+   "mean_mm": 0.55,
+   "p0_1_mm": 0.235,
+   "p99_9_mm": 0.86,
+   "limit_percent": 0.1,
+   "modes": [
+    {
+     "mode": "bulkhead does not pass",
+     "percent": 0.0,
+     "hard": true
+    }
+   ],
+   "verdict": "ok",
+   "note": "opened from 6.7 to 6.9 after the first study"
+  },
+  {
+   "fit": "ePTFE vent thread 12 through the wall",
+   "mean_mm": 0.6,
+   "p0_1_mm": 0.271,
+   "p99_9_mm": 0.932,
+   "limit_percent": 0.1,
+   "modes": [
+    {
+     "mode": "plug does not pass",
+     "percent": 0.0,
+     "hard": true
+    }
+   ],
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "fit": "cable tie 5 x 1.5 in the Y tunnel",
+   "mean_mm": 1.0,
+   "p0_1_mm": 0.682,
+   "p99_9_mm": 1.323,
+   "limit_percent": 0.1,
+   "modes": [
+    {
+     "mode": "tie does not pass",
+     "percent": 0.0,
+     "hard": true
+    }
+   ],
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "fit": "leg tongue in the Y tunnel",
+   "mean_mm": 1.0,
+   "p0_1_mm": 0.568,
+   "p99_9_mm": 1.442,
+   "limit_percent": 0.1,
+   "modes": [
+    {
+     "mode": "tongue does not pass",
+     "percent": 0.0,
+     "hard": true
+    }
+   ],
+   "verdict": "ok",
+   "note": "1.0 mm total, printed against printed"
+  },
+  {
+   "fit": "ballast tray channel over the heel rail",
+   "mean_mm": 1.2,
+   "p0_1_mm": 0.77,
+   "p99_9_mm": 1.631,
+   "limit_percent": 0.1,
+   "modes": [
+    {
+     "mode": "tray does not slide on",
+     "percent": 0.0,
+     "hard": true
+    }
+   ],
+   "verdict": "ok",
+   "note": "0.6 mm per side"
+  },
+  {
+   "fit": "peg 5 mm in the eyelets",
+   "mean_mm": 0.599,
+   "p0_1_mm": 0.27,
+   "p99_9_mm": 0.913,
+   "limit_percent": 0.1,
+   "modes": [
+    {
+     "mode": "peg does not start in the eyelet",
+     "percent": 0.0,
+     "hard": true
+    }
+   ],
+   "verdict": "ok",
+   "note": "the foot eyelet and the ballast tray pin bore are the same PEG_EYE_D, and the peg has to reach the rail notch behind them. A bought wire stake, so 0.3 mm a side like the SMA and the vent. At the first build's 5.0 bore this fit read a 50 % hard failure, which is what no peg would go in means."
+  },
+  {
+   "fit": "M3 heat set insert, lid column",
+   "mean_mm": -0.6,
+   "p0_1_mm": -0.907,
+   "p99_9_mm": -0.285,
+   "limit_percent": 0.1,
+   "modes": [
+    {
+     "mode": "bore is over the insert, nothing melts in to grip",
+     "percent": 0.0,
+     "hard": false
+    }
+   ],
+   "verdict": "ok",
+   "note": "the makers all specify a 4.0 bore in plastic for a 4.6 knurl (Ruthex M3x5.7, JLC DPLK-M3). The bore spread does not decide this fit: the iron reflows the plastic, so what matters is the 2.0 mm of boss left around it and the 7.0 mm depth against a 5.7 mm insert. Both are checked in design_rules.py, and a loose one is one drop of epoxy."
+  },
+  {
+   "fit": "M3 captive neck",
+   "mean_mm": -0.23,
+   "p0_1_mm": -0.526,
+   "p99_9_mm": 0.068,
+   "limit_percent": 0.1,
+   "modes": [
+    {
+     "mode": "screw is no longer captive, it pushes straight through",
+     "percent": 1.155,
+     "hard": false
+    },
+    {
+     "mode": "cannot be pressed in by hand",
+     "percent": 0.045,
+     "hard": true
+    }
+   ],
+   "verdict": "watch",
+   "note": "a deliberate press fit: the screw goes through once and then turns freely"
+  },
+  {
+   "fit": "M2.5 pilot in the PA boss",
+   "mean_mm": -0.349,
+   "p0_1_mm": -0.67,
+   "p99_9_mm": -0.034,
+   "limit_percent": 0.1,
+   "modes": [
+    {
+     "mode": "pilot is at or over the major diameter, the screw cannot bite",
+     "percent": 0.025,
+     "hard": true
+    }
+   ],
+   "verdict": "ok",
+   "note": "thread forming: a 2.1 pilot for a 2.45 screw leaves 0.35 to cut into, and the boss wall is 1.85 mm against a 1.5 mm rule of thumb, so splitting is not the binding mode"
+  }
+ ],
+ "failures": [],
+ "watch": [
+  "M3 captive neck"
+ ],
+ "oring": {
+  "compression_mean": 0.25,
+  "too_little_percent": 0.06,
+  "too_much_percent": 0.13
+ }
+}

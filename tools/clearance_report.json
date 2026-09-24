@@ -1,0 +1,84 @@
+{
+ "tool": "clearance_probe.py",
+ "process": "SLS/MJF PA12",
+ "probes": [
+  {
+   "probe": "M3x40 column A, key from below",
+   "free_radius_mm": 3.24,
+   "required_mm": 3.25,
+   "limited_by": "base",
+   "pass": true,
+   "unobstructed": false,
+   "service_free_radius_mm": 3.24,
+   "service_limited_by": "base",
+   "note": "An M3 socket head sits in the 6.5 x 3.5 counterbore. The same space remains when both legs and a ballast tray are fitted"
+  },
+  {
+   "probe": "M3x40 column B, key from below",
+   "free_radius_mm": 3.24,
+   "required_mm": 3.25,
+   "limited_by": "base",
+   "pass": true,
+   "unobstructed": false,
+   "service_free_radius_mm": 3.24,
+   "service_limited_by": "base",
+   "note": "An M3 socket head sits in the 6.5 x 3.5 counterbore. The same space remains when both legs and a ballast tray are fitted"
+  },
+  {
+   "probe": "M3x40 column C, key from below",
+   "free_radius_mm": 3.24,
+   "required_mm": 3.25,
+   "limited_by": "base",
+   "pass": true,
+   "unobstructed": false,
+   "service_free_radius_mm": 3.24,
+   "service_limited_by": "base",
+   "note": "An M3 socket head sits in the 6.5 x 3.5 counterbore. The same space remains when both legs and a ballast tray are fitted"
+  },
+  {
+   "probe": "M3x40 column D, key from below",
+   "free_radius_mm": 3.24,
+   "required_mm": 3.25,
+   "limited_by": "base",
+   "pass": true,
+   "unobstructed": false,
+   "service_free_radius_mm": 3.24,
+   "service_limited_by": "base",
+   "note": "An M3 socket head sits in the 6.5 x 3.5 counterbore. The same space remains when both legs and a ballast tray are fitted"
+  },
+  {
+   "probe": "SMA bulkhead nut, SW8 spanner",
+   "free_radius_mm": 8.6,
+   "required_mm": 8.0,
+   "limited_by": "base",
+   "pass": true,
+   "unobstructed": false,
+   "service_free_radius_mm": 6.3,
+   "service_limited_by": "plate",
+   "note": "A thin open end spanner needs a free radius of 8 mm. Fit the nut before the battery plate"
+  },
+  {
+   "probe": "ePTFE vent nut, fingers",
+   "free_radius_mm": 12.04,
+   "required_mm": 11.0,
+   "limited_by": "base",
+   "pass": true,
+   "unobstructed": false,
+   "service_free_radius_mm": 12.04,
+   "service_limited_by": "base",
+   "note": "The M12 nut is 16.0 mm across. The macro reserves 22.0 dia x 8.0 mm. Fit it before the battery plate"
+  },
+  {
+   "probe": "M2.5x6 driver, PCB screw",
+   "free_radius_mm": 4.86,
+   "required_mm": 1.75,
+   "limited_by": "base",
+   "pass": true,
+   "unobstructed": false,
+   "service_free_radius_mm": 4.86,
+   "service_limited_by": "base",
+   "note": "The PCB dummy is excluded. A 2.5 mm driver meets its own 2.7 mm hole, not this case"
+  }
+ ],
+ "failures": 0
+}

@@ -1,0 +1,309 @@
+{
+ "tool": "fem_lid.py",
+ "material": {
+  "youngs_modulus_mpa": 1700,
+  "poisson": 0.4,
+  "tensile_mpa": 48.0
+ },
+ "cases": {
+  "service": {
+   "total_n": 5.1,
+   "applied_to": "deck",
+   "faces": 9
+  },
+  "press": {
+   "total_n": 200.0,
+   "applied_to": "deck",
+   "faces": 9
+  },
+  "foot": {
+   "total_n": 800.0,
+   "applied_to": "deck",
+   "faces": 9
+  },
+  "screw": {
+   "total_n": 833.0,
+   "applied_to": "corner",
+   "faces": 4
+  },
+  "heel": {
+   "total_n": 800.0,
+   "applied_to": "centre",
+   "faces": 1
+  }
+ },
+ "runs": {
+  "press|relief=1.0|order=2nd|mesh=coarse": {
+   "case": "press",
+   "relief_mm": 1.0,
+   "deck_mm": 2.5,
+   "order": "2nd",
+   "mesh": "coarse",
+   "nodes": 63158,
+   "total_n": 200.0,
+   "max_vm_mpa": 18.51,
+   "p99_vm_mpa": 1.84,
+   "max_deflection_mm": 0.077,
+   "safety_max_vm": 2.59,
+   "safety_p99": 26.11,
+   "reaction_z_n": -200.6,
+   "hot_spot_mm": [
+    20.2,
+    19.3,
+    31.5
+   ],
+   "load_at": "deck"
+  },
+  "screw|relief=1.0|order=2nd|mesh=coarse": {
+   "case": "screw",
+   "relief_mm": 1.0,
+   "deck_mm": 2.5,
+   "order": "2nd",
+   "mesh": "coarse",
+   "nodes": 63284,
+   "total_n": 833.0,
+   "max_vm_mpa": 12.52,
+   "p99_vm_mpa": 4.19,
+   "max_deflection_mm": 0.018,
+   "safety_max_vm": 3.83,
+   "safety_p99": 11.45,
+   "reaction_z_n": -833.6,
+   "hot_spot_mm": [
+    -6.6,
+    -6.6,
+    28.0
+   ],
+   "load_at": "corner"
+  },
+  "screw|relief=0.0|order=2nd|mesh=coarse": {
+   "case": "screw",
+   "relief_mm": 0.0,
+   "deck_mm": 3.5,
+   "order": "2nd",
+   "mesh": "coarse",
+   "nodes": 66966,
+   "total_n": 833.0,
+   "max_vm_mpa": 12.47,
+   "p99_vm_mpa": 4.15,
+   "max_deflection_mm": 0.018,
+   "safety_max_vm": 3.85,
+   "safety_p99": 11.56,
+   "reaction_z_n": -837.3,
+   "hot_spot_mm": [
+    -6.6,
+    -6.6,
+    28.0
+   ],
+   "load_at": "corner"
+  },
+  "press|relief=0.0|order=2nd|mesh=coarse": {
+   "case": "press",
+   "relief_mm": 0.0,
+   "deck_mm": 3.5,
+   "order": "2nd",
+   "mesh": "coarse",
+   "nodes": 66946,
+   "total_n": 200.0,
+   "max_vm_mpa": 1.45,
+   "p99_vm_mpa": 0.49,
+   "max_deflection_mm": 0.003,
+   "safety_max_vm": 33.08,
+   "safety_p99": 97.41,
+   "reaction_z_n": -200.5,
+   "hot_spot_mm": [
+    -6.6,
+    -6.6,
+    28.0
+   ],
+   "load_at": "deck"
+  },
+  "foot|relief=1.0|order=2nd|mesh=fine": {
+   "case": "foot",
+   "relief_mm": 1.0,
+   "deck_mm": 2.5,
+   "order": "2nd",
+   "mesh": "fine",
+   "nodes": 141373,
+   "total_n": 800.0,
+   "max_vm_mpa": 147.14,
+   "p99_vm_mpa": 7.58,
+   "max_deflection_mm": 0.314,
+   "safety_max_vm": 0.33,
+   "safety_p99": 6.33,
+   "reaction_z_n": -799.0,
+   "hot_spot_mm": [
+    44.2,
+    35.9,
+    29.0
+   ],
+   "load_at": "deck"
+  },
+  "heel|relief=1.0|order=2nd|mesh=fine": {
+   "case": "heel",
+   "relief_mm": 1.0,
+   "deck_mm": 2.5,
+   "order": "2nd",
+   "mesh": "fine",
+   "nodes": 141468,
+   "total_n": 800.0,
+   "max_vm_mpa": 151.2,
+   "p99_vm_mpa": 62.71,
+   "max_deflection_mm": 2.983,
+   "safety_max_vm": 0.32,
+   "safety_p99": 0.77,
+   "reaction_z_n": -798.9,
+   "hot_spot_mm": [
+    43.4,
+    16.6,
+    29.0
+   ],
+   "load_at": "centre"
+  },
+  "heel|relief=0.0|order=2nd|mesh=fine": {
+   "case": "heel",
+   "relief_mm": 0.0,
+   "deck_mm": 3.5,
+   "order": "2nd",
+   "mesh": "fine",
+   "nodes": 153820,
+   "total_n": 800.0,
+   "max_vm_mpa": 23.03,
+   "p99_vm_mpa": 15.84,
+   "max_deflection_mm": 0.095,
+   "safety_max_vm": 2.08,
+   "safety_p99": 3.03,
+   "reaction_z_n": -799.7,
+   "hot_spot_mm": [
+    34.4,
+    21.0,
+    31.9
+   ],
+   "load_at": "centre"
+  },
+  "service|relief=1.0|order=2nd|mesh=coarse": {
+   "case": "service",
+   "relief_mm": 1.0,
+   "deck_mm": 2.5,
+   "order": "2nd",
+   "mesh": "coarse",
+   "element_size": [
+    "1.6",
+    "0.7"
+   ],
+   "nodes": 63191,
+   "total_n": 5.1,
+   "max_vm_mpa": 0.09,
+   "p99_vm_mpa": 0.04,
+   "max_deflection_mm": 0.002,
+   "safety_max_vm": 513.23,
+   "safety_p99": 1140.66,
+   "reaction_z_n": -5.1,
+   "hot_spot_mm": [
+    43.4,
+    16.2,
+    28.5
+   ],
+   "load_at": "deck"
+  },
+  "foot|relief=0.0|order=2nd|mesh=coarse": {
+   "case": "foot",
+   "relief_mm": 0.0,
+   "deck_mm": 3.5,
+   "order": "2nd",
+   "mesh": "coarse",
+   "element_size": [
+    "1.65 mm",
+    "0.72 mm"
+   ],
+   "nodes": 64518,
+   "total_n": 800.0,
+   "max_vm_mpa": 5.71,
+   "p99_vm_mpa": 1.98,
+   "max_deflection_mm": 0.012,
+   "safety_max_vm": 8.41,
+   "safety_p99": 24.29,
+   "reaction_z_n": -802.4,
+   "hot_spot_mm": [
+    -6.6,
+    -6.6,
+    28.0
+   ],
+   "load_at": "deck"
+  },
+  "heel|relief=0.5|order=2nd|mesh=coarse": {
+   "case": "heel",
+   "relief_mm": 0.5,
+   "deck_mm": 3.0,
+   "order": "2nd",
+   "mesh": "coarse",
+   "element_size": [
+    "1.65 mm",
+    "0.72 mm"
+   ],
+   "nodes": 62955,
+   "total_n": 800.0,
+   "max_vm_mpa": 178.66,
+   "p99_vm_mpa": 45.98,
+   "max_deflection_mm": 1.86,
+   "safety_max_vm": 0.27,
+   "safety_p99": 1.04,
+   "reaction_z_n": -798.8,
+   "hot_spot_mm": [
+    42.5,
+    15.1,
+    28.2
+   ],
+   "load_at": "centre"
+  },
+  "foot|relief=0.5|order=2nd|mesh=coarse": {
+   "case": "foot",
+   "relief_mm": 0.5,
+   "deck_mm": 3.0,
+   "order": "2nd",
+   "mesh": "coarse",
+   "element_size": [
+    "1.6 mm",
+    "0.7 mm"
+   ],
+   "nodes": 67576,
+   "total_n": 800.0,
+   "max_vm_mpa": 19.39,
+   "p99_vm_mpa": 4.83,
+   "max_deflection_mm": 0.197,
+   "safety_max_vm": 2.48,
+   "safety_p99": 9.93,
+   "reaction_z_n": -801.6,
+   "hot_spot_mm": [
+    42.8,
+    15.6,
+    28.2
+   ],
+   "load_at": "deck"
+  },
+  "service|relief=0.0|order=2nd|mesh=coarse": {
+   "case": "service",
+   "relief_mm": 0.0,
+   "deck_mm": 3.5,
+   "order": "2nd",
+   "mesh": "coarse",
+   "element_size": [
+    "1.65 mm",
+    "0.72 mm"
+   ],
+   "nodes": 64541,
+   "total_n": 5.1,
+   "max_vm_mpa": 0.04,
+   "p99_vm_mpa": 0.01,
+   "max_deflection_mm": 0.0,
+   "safety_max_vm": 1319.82,
+   "safety_p99": 3797.57,
+   "reaction_z_n": -5.1,
+   "hot_spot_mm": [
+    -6.6,
+    -6.6,
+    28.0
+   ],
+   "load_at": "deck"
+  }
+ }
+}
