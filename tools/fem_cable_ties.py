@@ -1,20 +1,26 @@
 """Cable-tie tunnels, complete base. Support on the trunk contact line, sqrt(2)*TIE_LOAD_N per exit on
 the bend radii. Run: freecadcmd SolarMeshtasticNodeMini_FEM_cable_ties.py (FreeCAD 1.0 with gmsh + ccx)"""
+
 # ruff: noqa: F821, E402  (names and FreeCAD modules come from the macro exec'd below)
 import os
 import math
+
 os.environ["SMN_NO_EXPORT"] = "1"
 HERE = os.path.dirname(os.path.abspath(__file__)) if "__file__" in dir() else os.getcwd()
-exec(open(os.path.join(HERE, "..", "freecad", "SolarMeshtasticNodeMini_Enclosure.FCMacro"), encoding="utf-8").read(), globals())
+exec(
+    open(os.path.join(HERE, "..", "freecad", "SolarMeshtasticNodeMini_Enclosure.FCMacro"), encoding="utf-8").read(),
+    globals(),
+)
 import ObjectsFem
 import FreeCAD as App
 from femtools import ccxtools
+
 tx = TIE_X[0]
-sl = base.copy()                                                          # complete base
-for (x_, y_) in corners:                     # screw holes filled, they are not in the tie load path and only upset the mesh
+sl = base.copy()  # complete base
+for x_, y_ in corners:  # screw holes filled, they are not in the tie load path and only upset the mesh
     sl = sl.fuse(cyl(x_, y_, -FLOOR, CBORE_D / 2 + 0.01, FLOOR + H_IN))
 sl = sl.removeSplitter()
-pad = box(-WALL, W_IN / 2 - 6, -FLOOR - 0.5, L_IN + 2 * WALL, 12, 0.51)                # support: trunk contact (centre line)
+pad = box(-WALL, W_IN / 2 - 6, -FLOOR - 0.5, L_IN + 2 * WALL, 12, 0.51)  # support: trunk contact (centre line)
 sl = sl.fuse(pad).removeSplitter()
 doc = App.newDocument("fem")
 part = doc.addObject("Part::Feature", "Slice")
@@ -52,6 +58,7 @@ for n, A in load_faces:
     an.addObject(pr)
     print(n, "p =", pr.Pressure)
 import ObjectsFem as OF
+
 mesh = OF.makeMeshGmsh(doc, "Mesh")
 mesh.Shape = part
 mesh.CharacteristicLengthMax = "2.6 mm"
@@ -61,6 +68,7 @@ an.addObject(mesh)
 reg = OF.makeMeshRegion(doc, mesh, 0.6, "Ref")
 reg.References = [(part, [n for n, _ in load_faces])]
 from femmesh.gmshtools import GmshTools
+
 g = GmshTools(mesh)
 err = g.create_mesh()
 print("mesh err:", err, "nodes", mesh.FemMesh.NodeCount)

@@ -1,35 +1,38 @@
 """Wind load on the antenna, stress around the SMA hole (CalculiX).
 The antenna is a stub bonded to the wall through flange and nut; the wind force acts on the stub.
 V_WIND [m/s] and L_ANT [mm] can be set as environment variables."""
+
 # ruff: noqa: F821, E402  (names and FreeCAD modules come from the macro exec'd below)
 import os
+
 os.environ["SMN_NO_EXPORT"] = "1"
 HERE = os.path.dirname(os.path.abspath(__file__)) if "__file__" in dir() else os.getcwd()
-exec(open(os.path.join(HERE, "..", "freecad", "SolarMeshtasticNodeMini_Enclosure.FCMacro"), encoding="utf-8").read(), globals())
+exec(
+    open(os.path.join(HERE, "..", "freecad", "SolarMeshtasticNodeMini_Enclosure.FCMacro"), encoding="utf-8").read(),
+    globals(),
+)
 import ObjectsFem
 import FreeCAD as App
 from femtools import ccxtools
 from femmesh.gmshtools import GmshTools
+
 V_WIND = float(os.environ.get("V_WIND", "45"))
 L_ANT = float(os.environ.get("L_ANT", "300")) / 1000.0
 D_ANT = 0.016
 CD = 1.1
 q = 0.5 * 1.25 * V_WIND**2
 F = q * CD * L_ANT * D_ANT
-print(f"wind {V_WIND} m/s, antenna {L_ANT *
-    1000:.0f} mm x {D_ANT *
-    1000:.0f} mm -> F = {F:.1f} N, M at the wall = {F *
-    (L_ANT /
-    2 +
-    0.02) *
-     1000:.0f} Nmm")
+print(
+    f"wind {V_WIND} m/s, antenna {L_ANT * 1000:.0f} mm x {D_ANT * 1000:.0f} mm -> F = {F:.1f} N, M at the wall = {
+        F * (L_ANT / 2 + 0.02) * 1000:.0f} Nmm"
+)
 # antenna stub: whip (vertical, hinge at x=-19.5) reduced to a straight cantilever for the load path
-sl = base.common(box(-40, -20, -FLOOR - 5, 70, W_IN + 40, FLOOR + H_IN + 10))   # left part of the base
-stub = cyl(-WALL - 2.0, SMA_Y, SMA_Z, 8.0, 14.0, V(-1, 0, 0))                  # connector + hinge body
-stub = stub.fuse(cyl(-16.0, SMA_Y, SMA_Z, D_ANT * 1000 / 2, L_ANT * 1000))       # whip, standing up
-sl = sl.fuse(cyl(-18.0, SMA_Y, SMA_Z, 3.6, 24.0, V(1, 0, 0)))                  # bulkhead shank through the wall
-sl = sl.fuse(cyl(-WALL, SMA_Y, SMA_Z, 8.0, 2.0, V(-1, 0, 0)))                  # flange on the outer wall face
-sl = sl.fuse(cyl(0.0, SMA_Y, SMA_Z, 5.0, 3.0, V(1, 0, 0)))                     # nut on the inner wall face
+sl = base.common(box(-40, -20, -FLOOR - 5, 70, W_IN + 40, FLOOR + H_IN + 10))  # left part of the base
+stub = cyl(-WALL - 2.0, SMA_Y, SMA_Z, 8.0, 14.0, V(-1, 0, 0))  # connector + hinge body
+stub = stub.fuse(cyl(-16.0, SMA_Y, SMA_Z, D_ANT * 1000 / 2, L_ANT * 1000))  # whip, standing up
+sl = sl.fuse(cyl(-18.0, SMA_Y, SMA_Z, 3.6, 24.0, V(1, 0, 0)))  # bulkhead shank through the wall
+sl = sl.fuse(cyl(-WALL, SMA_Y, SMA_Z, 8.0, 2.0, V(-1, 0, 0)))  # flange on the outer wall face
+sl = sl.fuse(cyl(0.0, SMA_Y, SMA_Z, 5.0, 3.0, V(1, 0, 0)))  # nut on the inner wall face
 sl = sl.fuse(stub).removeSplitter()
 print("solids in the model:", len(sl.Solids))
 sl = sl.removeSplitter()

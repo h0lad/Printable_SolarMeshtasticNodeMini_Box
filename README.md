@@ -7,8 +7,8 @@
 
 This is a box for SolarMeshtasticNodeMini.
 
-## Dimensions
 
+## Dimensions
 Body 78.2 x 59.2 x 40.5 mm, 86.6 x 67.6 mm over the screw columns. 
 
 The panel on its spacers adds 11 mm.
@@ -35,6 +35,20 @@ Stay within usual LiPo temperature corridor which is between 0-45°C.
 - 4x M3x40 A4 from below, captive in a 2.8 mm neck, into 4 heat set inserts, hole 4.0 x 7 mm
 - 1x M2.5x6 for the PCB
 - Cable ties 5 x 1.5 mm or cord up to 3 mm for the lashing tunnels, ground pegs for the legs
+
+
+### Wind
+
+Measured against the model: 135 x 90 panel, 5dBi 15 cm antenna, 308g without ballast.
+
+| setup | tips at | for reference |
+|---|---|---|
+| bare | 12.0 m/s | 43 km/h |
+| 1 kg of stone in the trays | 16.4 m/s | 59 km/h |
+| 2 kg of stone in the trays | 19.7 m/s | 71 km/h |
+| 90 x 60 panel, bare | 14.7 m/s | 53 km/h |
+| 90 x 60 panel, 1 kg | 21.0 m/s | 76 km/h |
+
 
 ### License
 

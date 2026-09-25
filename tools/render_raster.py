@@ -32,16 +32,16 @@ def render(npz, az, el, W=1500, H=1100, SS=2, pad=0.05, fname="out.png"):
     L2v = np.array([0.6, 0.3, 0.75])
     L2v /= np.linalg.norm(L2v)
     for gi, (T, c) in enumerate(groups):
-        P = T @ M.T                                   # view coords
+        P = T @ M.T  # view coords
         nrm = np.cross(P[:, 1] - P[:, 0], P[:, 2] - P[:, 0])
         ln = np.linalg.norm(nrm, axis=1)
         ok = ln > 1e-12
         P, nrm = P[ok], nrm[ok] / ln[ok, None]
         nrm[nrm[:, 2] < 0] *= -1
         dif = 0.28 + 0.55 * np.clip(nrm @ L1v, 0, 1) + 0.22 * np.clip(nrm @ L2v, 0, 1)
-        Hh = (L1v + np.array([0, 0, 1.0]))
+        Hh = L1v + np.array([0, 0, 1.0])
         Hh /= np.linalg.norm(Hh)
-        spec = 0.22 * np.clip(nrm @ Hh, 0, 1)**40
+        spec = 0.22 * np.clip(nrm @ Hh, 0, 1) ** 40
         shade = np.clip(np.outer(dif, c) + spec[:, None], 0, 1)
         X = ox + s * P[:, :, 0]
         Y = oy - s * P[:, :, 1]
@@ -68,26 +68,28 @@ def render(npz, az, el, W=1500, H=1100, SS=2, pad=0.05, fname="out.png"):
             if not m.any():
                 continue
             z = l0 * Z[k, 0] + l1 * Z[k, 1] + l2 * Z[k, 2]
-            sub = zb[ymin:ymax + 1, xmin:xmax + 1]
+            sub = zb[ymin : ymax + 1, xmin : xmax + 1]
             upd = m & (z > sub)
             if not upd.any():
                 continue
             sub[upd] = z[upd]
-            col[ymin:ymax + 1, xmin:xmax + 1][upd] = shade[k]
-            idb[ymin:ymax + 1, xmin:xmax + 1][upd] = gi
-            nb[ymin:ymax + 1, xmin:xmax + 1][upd] = nrm[k]
+            col[ymin : ymax + 1, xmin : xmax + 1][upd] = shade[k]
+            idb[ymin : ymax + 1, xmin : xmax + 1][upd] = gi
+            nb[ymin : ymax + 1, xmin : xmax + 1][upd] = nrm[k]
     # Kanten
     edge = np.zeros((h, w), bool)
     for dy, dx in ((0, 1), (1, 0)):
-        a_ = idb[:h - dy, :w - dx]
+        a_ = idb[: h - dy, : w - dx]
         b_ = idb[dy:, dx:]
-        e1 = (a_ != b_)
-        nd = (nb[:h - dy, :w - dx] * nb[dy:, dx:]).sum(-1) < 0.75
-        zd = np.abs(zb[:h - dy, :w - dx] - zb[dy:, dx:]) > 1.2
+        e1 = a_ != b_
+        nd = (nb[: h - dy, : w - dx] * nb[dy:, dx:]).sum(-1) < 0.75
+        zd = np.abs(zb[: h - dy, : w - dx] - zb[dy:, dx:]) > 1.2
         ee = e1 | ((a_ >= 0) & nd) | ((a_ >= 0) & (b_ >= 0) & zd)
-        edge[:h - dy, :w - dx] |= ee
-    edge = np.array(Image.fromarray(edge.astype(np.uint8) * 255).filter(ImageFilter.MaxFilter(3))) > 0 if SS > 1 else edge
-    bg = (idb < 0)
+        edge[: h - dy, : w - dx] |= ee
+    edge = (
+        np.array(Image.fromarray(edge.astype(np.uint8) * 255).filter(ImageFilter.MaxFilter(3))) > 0 if SS > 1 else edge
+    )
+    bg = idb < 0
     # Hintergrund: leichter Verlauf
     grad = np.linspace(0.97, 0.88, h)[:, None, None] * np.ones((1, w, 3))
     col[bg] = grad[bg]

@@ -1,10 +1,15 @@
 # ruff: noqa: F821, E402  (names and FreeCAD modules come from the macro exec'd below)
 """Writes 2D cross sections of the model to sections.json. Run: freecadcmd sections_export.py"""
+
 import os
 import json
+
 os.environ["SMN_NO_EXPORT"] = "1"
 HERE = os.path.dirname(os.path.abspath(__file__)) if "__file__" in dir() else os.getcwd()
-exec(open(os.path.join(HERE, "..", "freecad", "SolarMeshtasticNodeMini_Enclosure.FCMacro"), encoding="utf-8").read(), globals())
+exec(
+    open(os.path.join(HERE, "..", "freecad", "SolarMeshtasticNodeMini_Enclosure.FCMacro"), encoding="utf-8").read(),
+    globals(),
+)
 out = {}
 
 
@@ -27,8 +32,9 @@ def sect(name, shapes, plane, val, axes):
 
 
 nut = cyl(L_IN - VENT_NUT_H, VENT_Y, VENT_Z, VENT_NUT_D / 2, VENT_NUT_H, V(1, 0, 0))
-plug = cyl(L_IN + WALL - VENT_THREAD, VENT_Y, VENT_Z, 6.0, VENT_THREAD, V(1, 0, 0)
-           ).fuse(cyl(L_IN + WALL, VENT_Y, VENT_Z, 10.0, 8.0, V(1, 0, 0)))
+plug = cyl(L_IN + WALL - VENT_THREAD, VENT_Y, VENT_Z, 6.0, VENT_THREAD, V(1, 0, 0)).fuse(
+    cyl(L_IN + WALL, VENT_Y, VENT_Z, 10.0, 8.0, V(1, 0, 0))
+)
 legp = leg.copy()
 legp.translate(V(TIE_X[0] - LEG_T / 2, 0, 0))
 sect("vent_xz", [(base, "base"), (lid, "lid"), (nut, "nut"), (plug, "plug")], "y", VENT_Y, ("x", "z"))
